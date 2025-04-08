@@ -1,5 +1,6 @@
 import math
 from collections import Counter
+import sys
 
 def shannon_entropy(text):
     freq = Counter(text)
@@ -19,7 +20,11 @@ def read_text_from_file(file_path):
 # Example usage
 if __name__ == "__main__":
     file_path = "input.txt" 
-    text = read_text_from_file(file_path)
+    try:
+        text = read_text_from_file(file_path)
+    except:
+        print(f'First create a file for input with the name "{file_path}"')
+        sys.exit()
 
     entropy = shannon_entropy(text)
     print(f"Shannon entropy: {entropy:.4f} bits per character")
